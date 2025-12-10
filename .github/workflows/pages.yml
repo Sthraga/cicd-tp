@@ -22,7 +22,7 @@ jobs:
         run: npx allure generate allure-results/
 
       - name: Upload Allure report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5
         with:
           name: allure-report
           path: allure-report
@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - name: Download Allure report
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v5
         with:
           name: github-pages
           path: allure-report
