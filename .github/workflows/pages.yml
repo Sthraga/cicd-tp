@@ -21,8 +21,6 @@ jobs:
       - name: Generate Allure report
         run: npx allure generate allure-results/
 
-      - run: ls -clash allure-report
-
       - name: Upload Allure report
         uses: actions/upload-artifact@v5
         with:
@@ -48,8 +46,8 @@ jobs:
           name: github-pages
           path: allure-report
 
-      - run: ls -clash allure-report
-
-      - name: Deploy Allure report to GH Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
