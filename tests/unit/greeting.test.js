@@ -8,6 +8,8 @@ describe("getGreeting", () => {
   it("returns the hello world message when name is empty", () => {
     expect(getGreeting("")).toBe("Hello world!");
   });
-});
 
-//Tester le cas où name contient des caractères spéciaux AI!
+  it("returns the hello world message when name contains special characters", () => {
+    expect(getGreeting("@#$%")).toBe("Hello world! From @#$%");
+  });
+});
