@@ -9,3 +9,5 @@ describe("getGreeting", () => {
     expect(getGreeting("")).toBe("Hello world!");
   });
 });
+
+//Tester le cas où name contient des caractères spéciaux AI!
