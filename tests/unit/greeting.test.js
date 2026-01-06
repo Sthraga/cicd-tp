@@ -5,3 +5,5 @@ describe("getGreeting", () => {
     expect(getGreeting()).toBe("Hello world!");
   });
 });
+
+// Tester le cas où name est une chaîne vide AI!
