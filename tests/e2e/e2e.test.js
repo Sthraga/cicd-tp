@@ -27,6 +27,12 @@ describe("E2E GET /hello", () => {
     expect(res.status).toBe(200);
     expect(res.data).toBe("Hello world! From Bob");
   });
+
+  it("responds with Hello world! From @#$%", async () => {
+    const res = await axios.get(`${baseURL}/hello/@#$%`);
+    expect(res.status).toBe(200);
+    expect(res.data).toBe("Hello world! From @#$%");
+  });
 });
 
 describe("E2E POST /hello", () => {
@@ -42,5 +48,13 @@ describe("E2E POST /hello", () => {
     const res = await axios.post(`${baseURL}/hello`);
     expect(res.status).toBe(200);
     expect(res.data).toBe("Hello world!");
+  });
+
+  it("responds with Hello world! From @#$%", async () => {
+    const res = await axios.post(`${baseURL}/hello`, {}, {
+      headers: { "x-name": "@#$%" }
+    });
+    expect(res.status).toBe(200);
+    expect(res.data).toBe("Hello world! From @#$%");
   });
 });
