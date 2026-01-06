@@ -7,12 +7,12 @@ describe("Integration tests for app endpoints", () => {
       const response = await request(app)
         .post("/hello")
         .set("x-name", "Alice");
-      expect(response.body).toBe("Hello world! From Alice");
+      expect(response.text).toBe("Hello world! From Alice");
     });
 
     it("should return default greeting without x-name header", async () => {
       const response = await request(app).post("/hello").expect(200);
-      expect(response.body).toBe("Hello world!");
+      expect(response.text).toBe("Hello world!");
     });
   });
 
@@ -26,7 +26,7 @@ describe("Integration tests for app endpoints", () => {
     it("should return greeting with name from URL", async () => {
       const response = await request(app).get("/hello/Bob");
       expect(response.statusCode).toBe(200);
-      expect(response.body).toBe("Hello world! From Bob");
+      expect(response.text).toBe("Hello world! From Bob");
     });
   });
 });
