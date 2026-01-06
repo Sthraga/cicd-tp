@@ -4,6 +4,8 @@ describe("getGreeting", () => {
   it("returns the hello world message", () => {
     expect(getGreeting()).toBe("Hello world!");
   });
-});
 
-// Tester le cas où name est une chaîne vide AI!
+  it("returns the hello world message when name is empty", () => {
+    expect(getGreeting("")).toBe("Hello world!");
+  });
+});
