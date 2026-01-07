@@ -18,5 +18,16 @@ jobs:
         run: npm ci
       - name: Run test
         run: npm test
+      - name: Run Allure Action
+        uses: allure-framework/allure-report@v0
+        with:
+          # Path to the generated report directory
+          # By default, it's set to `./allure-report`
+          report-directory: "./allure-report"
+          # GitHub Token that's used for posting the comments in Pull Requests
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Lint code
         run: npm run lint
+permissions:
+  pull-requests: write
+  checks: write

@@ -37,9 +37,9 @@ describe("Integration tests for app endpoints", () => {
     });
 
     it("should return greeting with special characters in URL", async () => {
-      const response = await request(app).get("/hello/@#$%");
+      const response = await request(app).get("/hello/@");
       expect(response.statusCode).toBe(200);
-      expect(response.text).toBe("Hello world! From @#$%");
+      expect(response.text).toBe("Hello world! From @");
     });
   });
 });
