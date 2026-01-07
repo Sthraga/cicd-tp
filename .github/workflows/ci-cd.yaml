@@ -6,6 +6,9 @@ on:
   pull_request:
     branches:
       - master
+permissions:
+  pull-requests: write
+  checks: write
 jobs:
   first-job:
     runs-on: ubuntu-latest
@@ -30,6 +33,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Lint code
         run: npm run lint
-permissions:
-  pull-requests: write
-  checks: write
