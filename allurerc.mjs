@@ -1,6 +1,6 @@
-import { defineConfig } from "allure";
+const { defineConfig } = require("allure");
 
-export default defineConfig({
+module.exports = defineConfig({
   name: "Allure Report Example",
   output: "./out/allure-report",
   plugins: {
