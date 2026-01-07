@@ -19,6 +19,8 @@ jobs:
           node-version-file: ".nvmrc"
       - name: Install dependencies
         run: npm ci
+      - name: Lint code
+        run: npm run lint
       - name: Run tests and generate report
         run: npx allure run -- npm run test
       - name: Run Allure Action
@@ -29,5 +31,3 @@ jobs:
           report-directory: "./allure-report"
           # GitHub Token that's used for posting the comments in Pull Requests
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Lint code
-        run: npm run lint
