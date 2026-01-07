@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run test
-        run: npm test
+        run: npm test -- allure generate
       - name: Run Allure Action
         uses: allure-framework/allure-report@v0
         with:
