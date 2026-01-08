@@ -31,3 +31,22 @@ jobs:
           report-directory: "./allure-report"
           # GitHub Token that's used for posting the comments in Pull Requests
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Allure Report (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          retention-days: 7
+      - name: Comment PR (status + lien)
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: allure
+          message: |
+            **CI status:** `${{ job.status }}`
+            **Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            **Allure artifact:** `allure-report` (à télécharger depuis le run)
+      - name: Upload Pages artifact
+        if: always() && github.ref == 'refs/heads/master' && (hashFiles('allure-report/**') != '')
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
